@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zuoye.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="User">
+        <id column="telephone" property="telephone" />
+        <result column="password" property="password" />
+
+    </resultMap>
+
+
+    <!--用户登录 -->
+    <select id="login" parameterType="java.util.Map"
+            resultType="User">
+        select * from user where telephone=#{telephone} and password=#{password}
+    </select>
+
+
+
+    <insert id="addUser" parameterType="User">
+
+        insert into user(telephone,password) values(#{telephone},#{password})
+
+    </insert>
+
+</mapper>

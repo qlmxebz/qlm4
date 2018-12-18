@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zuoye.mapper.InfoMapper">
+    <resultMap id="infoMap" type="Info" >
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="date" property="date"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <delete id="delete" parameterType="Integer">
+        delete from info where id=#{id}
+    </delete>
+
+    <select id="queryAll" resultMap="infoMap">
+        select title,date,content,id from info
+    </select>
+
+    <select id="queryById" resultMap="infoMap" parameterType="Integer">
+        select title,date,content,id from info where id=#{id}
+    </select>
+
+    <update id="updateById" parameterType="Info">
+        update info set content=#{content},title=#{title},date=#{date} where id=#{id}
+    </update>
+
+
+
+
+
+
+
+</mapper>
